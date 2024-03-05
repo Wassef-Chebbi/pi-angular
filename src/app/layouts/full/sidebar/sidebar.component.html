@@ -1,0 +1,14 @@
+<div class="flex-layout">
+  <div class="branding">
+    <a href="/">
+      <img
+        src="../../../../assets/contents/img/logo-icon-nobg.png"
+        class="dash__side-bar__logo"
+        alt="logo"
+      />
+    </a>
+  </div>
+  <mat-nav-list class="sidebar-list"
+    ><app-nav-item *ngFor="let item of navItems" [item]="item"> </app-nav-item>
+  </mat-nav-list>
+</div>
