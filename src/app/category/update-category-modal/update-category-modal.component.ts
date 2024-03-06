@@ -19,9 +19,9 @@ export class UpdateCategoryModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<UpdateCategoryModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
 
@@ -32,49 +32,46 @@ export class UpdateCategoryModalComponent implements OnInit {
     this.updateCategoryForm = this.formBuilder.group({
       categoryId: [this.category?.categoryId ?? ''],
       nom: [this.category?.nom ?? ''],
-      description: [this.category?.description ?? ''],
+      description: [this.category?.description ?? '']
     });
-    console.log(this.updateCategoryForm.value);
 
     this.newCategoryForm = this.formBuilder.group({
       categoryId: [''],
       nom: [''],
       description: [''],
     });
-    console.log(this.newCategoryForm.value);
   }
 
 
 
   addCategory() {
     if (this.isNew)
-      // Update existing category
       this.categoryService.createCategory(this.newCategoryForm.value)
-        .subscribe(
-          response => {
-            // Handle successful update
-            this.dialogRef.close(true); // Close modal with success indicator
+        .subscribe({
+          next: response => {
+            this.dialogRef.close(true);
+            console.log(response)
           },
-          error => {
-            // Handle errors
+          error: error => {
+            console.error('There was an error adding new category', error);
+
           }
-        );
+        });
   }
 
 
   updateCategory() {
     if (!this.isNew)
-      // Update existing category
       this.categoryService.updateCategory(this.updateCategoryForm.value)
-        .subscribe(
-          response => {
-            // Handle successful update
-            this.dialogRef.close(true); // Close modal with success indicator
+        .subscribe({
+          next: response => {
+            this.dialogRef.close(true);
+            console.log(response)
           },
-          error => {
-            // Handle errors
+          error: error => {
+            console.error('There was an error updating category', error)
           }
-        );
+        });
 
   }
 }

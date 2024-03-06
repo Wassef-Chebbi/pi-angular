@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { category } from '../../category/model/category';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class CategoryService {
     return this.httpClient.post('http://localhost:8080/api/category/categories', category);
   }
 
-  getAllCategories() {
+  getAllCategories(): Observable<category[]> {
     return this.httpClient.get<category[]>('http://localhost:8080/api/category/categories');
   }
 

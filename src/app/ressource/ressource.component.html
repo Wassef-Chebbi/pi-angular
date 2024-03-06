@@ -9,8 +9,8 @@
 </div>
 
 <div>
-  <ng-container *ngFor="let ressource of ressourceList">
-    <mat-card>
+  <ng-container *ngIf="ressourceList.length > 0">
+    <mat-card *ngFor="let ressource of ressourceList">
       <mat-card-header>
         <mat-card-title>{{ ressource.nom }}</mat-card-title>
       </mat-card-header>
@@ -18,8 +18,11 @@
       <ng-container
         *ngIf="ressource.categories && ressource.categories.length > 0"
       >
-        <mat-card-content *ngFor="let cat of ressource?.categories">
-          categories: {{ cat.description }}
+        <mat-card-content>
+          <mat-label>categories: </mat-label>
+          <ng-container *ngFor="let cat of ressource?.categories">{{
+            cat.nom + ", "
+          }}</ng-container>
         </mat-card-content>
       </ng-container>
       <mat-card-actions>
@@ -36,4 +39,4 @@
     </mat-card>
   </ng-container>
 </div>
-<div *ngIf="!ressourceList">Loading ressources...</div>
+<mat-spinner *ngIf="!ressourceList"></mat-spinner>

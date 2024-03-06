@@ -20,3 +20,15 @@
 .mat-raised-button{
     justify-content: right;
 }
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.mat-mdc-paginator-page-size-ng-star-inserted {
+    display: none;
+  }
+
+

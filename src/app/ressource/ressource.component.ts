@@ -1,4 +1,4 @@
-import { Component, ViewChild, } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { RessourceService } from '../shared/services/ressource.service';
 import { ressource } from './model/ressource';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './ressource.component.html',
   styleUrls: ['./ressource.component.scss']
 })
-export class RessourceComponent {
+export class RessourceComponent implements OnInit {
   @ViewChild('RessourceModal')
   ressourceList: ressource[] = [];
   // [{ "ressourceId": 1, "nom": "Resource Name 1", "description": "This is a resource description 1", "categories": [] },
@@ -28,14 +28,18 @@ export class RessourceComponent {
     private ressourceService: RessourceService,
     private dialog: MatDialog,
 
-  ) { }
+  ) {
+  }
 
 
   ngOnInit() {
-    this.getRessources();
-    //console.log(this.ressourceList);
+    Promise.resolve().then(() => this.getRessources());
+
+
+
 
   }
+
 
 
 
@@ -44,6 +48,7 @@ export class RessourceComponent {
       .getAllRessources()
       .subscribe((ressources: ressource[]) => {
         this.ressourceList = ressources;
+        console.log(this.ressourceList);
       });
 
 
@@ -71,11 +76,13 @@ export class RessourceComponent {
 
 
   onDeleteClick(id: number) {
+
     this.ressourceService.deleteRessource(id).subscribe({
       next: (response: any) => {
         this.ressourceList = this.ressourceList.filter(
           (ressource) => ressource.ressourceId !== id
         );
+
         console.log('Category deleted successfully!');
       },
       error: (error: any) => {
@@ -83,5 +90,21 @@ export class RessourceComponent {
       },
     });
   }
+  // onDeleteClick(id: number) {
+  //   this.ressourceService.deleteRessource(id).subscribe({
+  //     next: (response: any) => {
+  //       const index = this.ressourceList.findIndex(
+  //         (ressource) => ressource.ressourceId === id
+  //       );
+  //       if (index !== -1) {
+  //         this.ressourceList.splice(index, 1);
+  //       }
+  //       console.log('Category deleted successfully!');
+  //     },
+  //     error: (error: any) => {
+  //       console.error('Error deleting category:', error);
+  //     },
+  //   });
+  // }
 
 }
