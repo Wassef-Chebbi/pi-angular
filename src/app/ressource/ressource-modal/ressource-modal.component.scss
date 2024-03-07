@@ -1,0 +1,49 @@
+.file-input {
+    display: none;
+  }
+.file-upload{
+    display: flex;
+}
+
+
+div{
+    margin: 2px;
+    display: grid;
+    }
+form {
+    display: flex;
+    flex-direction: column;
+}
+mat-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1px;
+    }
+    
+mat-form-field {
+    width: 80%;
+    justify-content: center;
+    }
+
+input,
+textarea, mat-select {
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    }
+
+textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
+    }
+
+/* Optional: Add some styling for mat-form-field when in focus */
+mat-form-field.mat-focused .mat-form-field-underline {
+    color: #2196f3; /* Change to your preferred color */
+    }
+
+
+ 

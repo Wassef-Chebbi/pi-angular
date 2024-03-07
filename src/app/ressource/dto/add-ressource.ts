@@ -3,7 +3,7 @@ export class addRessourceDto {
     nom: string;
     description: string;
     categoriesId: number[];
-    // image: string;
+    URL: string;
     // createdAt: Date;
     // updatedAt: Date;
 }

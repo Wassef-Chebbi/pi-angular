@@ -1,7 +1,7 @@
 <h1 mat-dialog-title *ngIf="isNew">Add category</h1>
 <h1 mat-dialog-title *ngIf="!isNew">Update category</h1>
 <div class="wrapper">
-  <div *ngIf="!isNew">
+  <ng-container *ngIf="!isNew">
     <div mat-dialog-content>
       <p>Please edit the category details here.</p>
       <form [formGroup]="updateCategoryForm">
@@ -33,10 +33,10 @@
         Update
       </button>
     </div>
-  </div>
+  </ng-container>
 
   <!-- ===========  the modal for adding a new category ================ -->
-  <div *ngIf="isNew">
+  <ng-container *ngIf="isNew">
     <div mat-dialog-content>
       <form [formGroup]="newCategoryForm">
         <div>
@@ -61,5 +61,5 @@
       <button mat-button [mat-dialog-close] color="warn">Close</button>
       <button mat-button color="primary" (click)="addCategory()">Add</button>
     </div>
-  </div>
+  </ng-container>
 </div>

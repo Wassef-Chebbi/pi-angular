@@ -1,0 +1,42 @@
+mat-spinner {
+    margin: 0 auto;
+    display: block;
+}
+.listContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Optionally distribute cards with spacing */
+    }
+.listContainer mat-card {
+    width: 33%;
+    }
+
+
+    .title {
+        /* your styles here */
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+    
+    .container {
+        
+        display: flex; /* Enable Flexbox layout */
+        justify-content: center; /* Distribute space between elements */
+        align-items: center; /* Align horizontally in the center */
+        width: 100%; /* Ensure full width on all screen sizes */
+        max-width: 900px; /* Set a maximum width for larger screens */
+        margin: 0 auto; /* Center the container horizontally */
+        padding: 1rem; /* Add some padding for visual balance */
+      }
+    .mat-raised-button{
+        justify-content: right;
+    }
+    
+    .buttonContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }

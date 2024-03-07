@@ -1,14 +1,19 @@
 <!-- <app-category-list> </app-category-list> -->
 <div calss="container">
   <div class="title"><h1>ressource List</h1></div>
-  <div>
-    <button mat-raised-button color="primary" (click)="addRessource()">
-      Add Category
+  <div class="buttonContainer">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addRessource()"
+      matTooltip="Click to add new ressource"
+    >
+      Add Ressource
     </button>
   </div>
 </div>
 
-<div>
+<div class="listContainer" *ngIf="ressourceList.length > 0">
   <ng-container *ngFor="let ressource of ressourceList">
     <mat-card>
       <mat-card-header>
@@ -18,12 +23,23 @@
       <ng-container
         *ngIf="ressource.categories && ressource.categories.length > 0"
       >
-        <mat-card-content *ngFor="let cat of ressource?.categories">
-          categories: {{ cat.description }}
+        <mat-card-content>
+          <mat-label>categories: </mat-label>
+          <ng-container *ngFor="let cat of ressource?.categories">{{
+            cat.nom + ", "
+          }}</ng-container>
+          <p>{{ ressource.fileURL }}</p>
         </mat-card-content>
       </ng-container>
+
       <mat-card-actions>
-        <button mat-button color="secondary">Update</button>
+        <button
+          mat-button
+          color="secondary"
+          (click)="updateRessource(ressource)"
+        >
+          Update
+        </button>
 
         <button
           mat-button
@@ -36,4 +52,12 @@
     </mat-card>
   </ng-container>
 </div>
-<div *ngIf="!ressourceList">Loading ressources...</div>
+<mat-paginator
+  [length]="totalRessources"
+  [pageSize]="pageSize"
+  (page)="handlePageChange($event)"
+  [hidePageSize]="true"
+>
+</mat-paginator>
+
+<mat-spinner *ngIf="!ressourceList"></mat-spinner>

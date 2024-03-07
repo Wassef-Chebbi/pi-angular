@@ -4,6 +4,7 @@ import { ressource } from '../model/ressource';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { RessourceService } from 'app/shared/services/ressource.service';
+import { FileService } from 'app/shared/services/file.service';
 import { category } from 'app/category/model/category';
 import { addRessourceDto } from '../dto/add-ressource';
 @Component({
@@ -19,6 +20,16 @@ export class RessourceModalComponent {
   categoriesIds = new FormControl([]);
   categoryList: category[] = [];
   newRessourceDto: addRessourceDto;
+  fileURL: string;
+  uploadPath = 'file/ressource/';
+  fileName: string;
+
+  updateRessourceForm: FormGroup;
+  selectedCategoriesIds: number[] = [];
+
+
+
+
 
 
   constructor(
@@ -26,17 +37,31 @@ export class RessourceModalComponent {
     public dialogRef: MatDialogRef<RessourceModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private uploadService: FileService
   ) {
+
+    this.ressource = this.data.category;
+    this.isNew = this.data.isNew;
+
+    this.updateRessourceForm = this.formBuilder.group({
+      categoryId: [this.ressource?.ressourceId ?? ''],
+      nom: [this.ressource?.nom ?? ''],
+      description: [this.ressource?.description ?? ''],
+      categoriesIds: [this.ressource?.categories.map(c => c.categoryId) ?? []],
+      URL: [this.ressource?.fileURL ?? '']
+    });
+
     this.newRessourceForm = this.formBuilder.group({
       nom: [''],
       description: [''],
-      categoriesIds: [] // Initialize as an empty array
+      categoriesIds: [],
+      URL: [this.fileURL ?? '']
     });
   }
 
   ngOnInit() {
-
+    this.selectedCategoriesIds = this.ressource?.categories.map(c => c.categoryId) ?? [];
     this.ressource = this.data.ressource;
     this.isNew = this.data.isNew;
     this.getCategories();
@@ -55,7 +80,8 @@ export class RessourceModalComponent {
   addRessource() {
     if (this.isNew) {
       this.newRessourceDto = this.newRessourceForm.value;
-      console.log(this.newRessourceDto);
+      this.newRessourceDto.URL = this.fileURL;
+      console.log(this.newRessourceDto, "$$$$$$$$");
       this.ressourceService.createRessource(this.newRessourceDto)
         .subscribe(
           response => {
@@ -69,6 +95,52 @@ export class RessourceModalComponent {
     }
 
   }
+  onFileSelected(event: any) {
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.fileName = file.name;
+      this.upload(file);
+    }
+  }
+
+
+  upload(fl: File): string {
+    console.log(this.uploadPath)
+    this.uploadService.upload(fl, this.uploadPath + fl.name)
+      .subscribe(response => {
+        this.fileURL = response.fileURL;
+
+        console.log('Upload successful!', response);
+      }, error => {
+        console.error('Upload failed:', error);
+      });
+    return this.fileURL;
+  }
+
+  updateRessource() {
+    if (!this.isNew)
+      this.ressourceService.updateRessource(this.updateRessourceForm.value)
+        .subscribe({
+          next: response => {
+            this.dialogRef.close(true);
+            console.log(response)
+          },
+          error: error => {
+            console.error('There was an error updating category', error)
+          }
+        });
+
+  }
+
+
+
+
+
+
+
+
 
   onSelectionChange(event: any) {
     const selectedOption = event.source.value;

@@ -5,6 +5,8 @@ import { MaterialModule } from '../material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RessourceRoutingModule } from './ressource-routing.module';
 import { RessourceModalComponent } from './ressource-modal/ressource-modal.component';
+//import { MaterialFileInputModule } from 'ngx-material-file-input';
+
 
 
 
@@ -21,7 +23,8 @@ import { RessourceModalComponent } from './ressource-modal/ressource-modal.compo
     MaterialModule,
     FormsModule,
     RessourceRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ]
 })
 export class RessourceModule { }
