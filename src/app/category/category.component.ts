@@ -25,6 +25,8 @@ export class CategoryComponent {
   filteredCategories: category[] = [];
 
 
+
+
   constructor(
     private dialog: MatDialog,
     private categoryService: CategoryService

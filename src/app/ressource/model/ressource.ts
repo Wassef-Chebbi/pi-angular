@@ -5,5 +5,6 @@ export class ressource {
     nom: string;
     description: string;
     categories: category[];
+    fileURL: string;
 
 }
