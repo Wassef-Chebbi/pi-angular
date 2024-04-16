@@ -4,6 +4,7 @@ import { CategoryService } from 'app/shared/services/category.service';
 import { FileService } from 'app/shared/services/file.service';
 import { category } from '../model/category';
 import { categoryDTO } from '../model/categoryDTO';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-category',
@@ -21,17 +22,20 @@ export class AddCategoryComponent {
 
   newCategory: categoryDTO;
 
+  canAdd = false;
+
   constructor(
 
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
-    private uploadService: FileService
+    private uploadService: FileService,
+    private router: Router,
 
   ) {
 
     this.newCategoryForm = this.formBuilder.group({
-      nom: [''],
-      description: [''],
+      nom: [],
+      description: [],
       // imagePath: [this.imagePath ?? ''],
       // imageURL: [this.imageURL ?? '']
     });
@@ -44,15 +48,17 @@ export class AddCategoryComponent {
 
 
   addCategory() {
+
     this.newCategory = this.newCategoryForm.value;
     this.newCategory.imagePath = this.imagePath;
     this.newCategory.imageURL = this.imageURL;
+
     console.log(this.newCategory, "=-=-=-=-=-=-=-=-=-=-=-");
 
     this.categoryService.createCategory(this.newCategory)
       .subscribe({
         next: response => {
-
+          this.router.navigate(['list']);
           console.log(response)
         },
         error: error => {
@@ -78,6 +84,10 @@ export class AddCategoryComponent {
       .subscribe({
         next: response => {
           this.imageURL = response.url;
+          if (this.imageURL) {
+            this.canAdd = true;
+          }
+
           console.log(this.imageURL, "=-=-=-=-=-=-=-=-=-=-=-");
           console.log('Upload successful!', response);
         },

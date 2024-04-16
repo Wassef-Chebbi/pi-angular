@@ -55,6 +55,7 @@
                   type="submit"
                   style="margin: 10px"
                   (click)="addCategory()"
+                  [disabled]="!canAdd"
                 >
                   Send
                 </button>

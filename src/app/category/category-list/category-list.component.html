@@ -1,5 +1,4 @@
-<router-outlet></router-outlet>
-<!-- <div calss="container">
+<div calss="container">
   <div class="title"><h1>Category List</h1></div>
   <div class="buttonContainer">
     <button
@@ -7,59 +6,14 @@
       mat-raised-button
       matTooltip="Click to add new category"
       color="primary"
-      routerLink="/add"
+      (click)="add()"
     >
       Add Category
     </button>
   </div>
-</div> -->
+</div>
 
-<!-- <div calss="listContainer" *ngIf="categoryList.length > 0">
-  <ng-container *ngFor="let category of filteredCategories">
-    <mat-card matRipple>
-      <mat-card-header>
-        <mat-card-title>{{ category.categoryId }}</mat-card-title>
-        <mat-card-subtitle
-          >{{ category.nom }}
-          <img
-            src="https://wassef.blob.core.windows.net/azure-container/Category%2Fimage1"
-            alt=""
-          />
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        {{ category.description }}
-      </mat-card-content>
-      <mat-card-actions>
-        <button
-          mat-button
-          matTooltip="Click to update this category"
-          (click)="updateCategory(category)"
-          color="secondary"
-        >
-          Update
-        </button>
-
-        <button
-          mat-button
-          (click)="onDeleteClick(category.categoryId)"
-          color="warn"
-          matTooltip="Click to delete this category"
-        >
-          Delete
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </ng-container>
-  <mat-paginator
-    [length]="totalCategories"
-    [pageSize]="pageSize"
-    (page)="handlePageChange($event)"
-    [hidePageSize]="true"
-  >
-  </mat-paginator>
-</div> -->
-<!-- <div class="container py-4 py-xl-5">
+<div class="container py-4 py-xl-5">
   <div
     class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3"
     *ngIf="categoryList.length > 0"
@@ -116,10 +70,11 @@
     </ng-container>
   </div>
 </div>
+
 <mat-paginator
   [length]="totalCategories"
   [pageSize]="pageSize"
   (page)="handlePageChange($event)"
   [hidePageSize]="true"
 >
-</mat-paginator> -->
+</mat-paginator>
