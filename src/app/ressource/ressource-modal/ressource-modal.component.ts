@@ -108,9 +108,9 @@ export class RessourceModalComponent {
 
   upload(fl: File): string {
     console.log(this.uploadPath)
-    this.uploadService.upload(fl, this.uploadPath + fl.name)
+    this.uploadService.upload(fl, this.uploadPath, fl.name)
       .subscribe(response => {
-        this.fileURL = response.fileURL;
+        this.fileURL = response.toString();
 
         console.log('Upload successful!', response);
       }, error => {

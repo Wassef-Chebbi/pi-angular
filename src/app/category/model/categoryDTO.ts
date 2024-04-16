@@ -1,5 +1,4 @@
-export class category {
-    categoryId: number;
+export class categoryDTO {
     nom: string;
     description: string;
     imagePath: string;

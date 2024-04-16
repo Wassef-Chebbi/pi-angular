@@ -17,10 +17,12 @@ export class CategoryComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('updateCategoryModal') updateCategoryModal: UpdateCategoryModalComponent;
 
+  isAdmin = true;
+
   selectedCategory: category;
   totalCategories!: number;
   currentPage = 1;
-  pageSize = 3;
+  pageSize = 9;
   categoryList: category[] = [];
   filteredCategories: category[] = [];
 

@@ -13,19 +13,23 @@ export class RessourceService {
 
 
   createRessource(ressource: addRessourceDto) {
-    return this.httpClient.post('http://localhost:8080/api/ressource/ressources', ressource);
+    return this.httpClient.post('http://localhost:8080/api/ressource/add', ressource);
   }
 
   getAllRessources(): Observable<ressource[]> {
-    return this.httpClient.get<ressource[]>('http://localhost:8080/api/ressource/ressources');
+    return this.httpClient.get<ressource[]>('http://localhost:8080/api/ressource/getAll');
 
   }
 
   updateRessource(ressource: ressource) {
-    return this.httpClient.put('http://localhost:8080/api/ressource/ressources', ressource);
+    return this.httpClient.put('http://localhost:8080/api/ressource/update', ressource);
   }
 
   deleteRessource(id: number) {
     return this.httpClient.delete(`http://localhost:8080/api/ressource/delete/${id}`);
+  }
+
+  getRessourceById(id: number): Observable<ressource> {
+    return this.httpClient.get<ressource>(`http://localhost:8080/api/ressource/getById/${id}`);
   }
 }

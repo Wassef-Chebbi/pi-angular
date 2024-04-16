@@ -6,6 +6,8 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './category.component';
 import { UpdateCategoryModalComponent } from './update-category-modal/update-category-modal.component';
 import { CategoryService } from '../shared/services/category.service';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 
@@ -13,6 +15,8 @@ import { CategoryService } from '../shared/services/category.service';
   declarations: [
     CategoryComponent,
     UpdateCategoryModalComponent,
+    ManageCategoryComponent,
+    AddCategoryComponent,
 
 
 
@@ -23,8 +27,6 @@ import { CategoryService } from '../shared/services/category.service';
     ReactiveFormsModule,
     MaterialModule,
     CategoryRoutingModule,
-
-
   ],
   providers: [CategoryService],
 })

@@ -15,17 +15,18 @@ export const navItems: NavItem[] = [
     displayName: 'Category',
     iconName: 'school',
     route: '/dashboard/categories',
+
+  },
+  {
+    displayName: 'Ressources',
+    iconName: 'checkup-list',
+    route: '/dashboard/ressources',
   },
 
   {
     displayName: 'Event',
     iconName: 'bed',
     route: '/',
-  },
-  {
-    displayName: 'Ressources',
-    iconName: 'checkup-list',
-    route: '/dashboard/ressources',
   },
 
   {

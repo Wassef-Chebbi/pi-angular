@@ -12,12 +12,22 @@ export class FileService {
   constructor(private httpClient: HttpClient) { }
 
 
-  upload(file: File, path: string): Observable<any> {
+  upload(file: File, path: string, name: string): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('path', path);
-    return this.httpClient.post('http://localhost:8080/api/upload', formData);
+    formData.append('name', name);
+    return this.httpClient.post('http://localhost:8080/api/file/upload', formData);
   }
+
+  update(file: File, path: string): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('path', path);
+    return this.httpClient.post('http://localhost:8080/api/file/update', formData);
+  }
+
+
 
 
 }

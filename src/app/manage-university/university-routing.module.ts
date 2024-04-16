@@ -4,22 +4,22 @@ import { UniversityListComponent } from './university-list/university-list.compo
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: UniversityListComponent,
-  },
-  {
-    path: ':id',
-    component: UniversityDetailComponent,
-  },
-  {
-    path: 'news',
-    children: [],
-  },
+  // {
+  //   path: '',
+  //   component: UniversityListComponent,
+  // },
+  // {
+  //   path: ':id',
+  //   component: UniversityDetailComponent,
+  // },
+  // {
+  //   path: 'news',
+  //   children: [],
+  // },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ManageUniversityRoutingModule {}
+export class ManageUniversityRoutingModule { }

@@ -33,6 +33,7 @@ import { NavbarComponent } from './layouts/front/navbar/navbar.component';
 import { FooterComponent } from './layouts/front/footer/footer.component';
 
 import { SharedModule } from './shared/shared.module';
+import { CategoryModule } from './category/category.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SharedModule } from './shared/shared.module';
     UniversityModule,
     ClubModule,
     SharedModule,
+    CategoryModule
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],

@@ -3,6 +3,7 @@
   <div class="title"><h1>Category List</h1></div>
   <div class="buttonContainer">
     <button
+      *ngIf="isAdmin"
       mat-raised-button
       matTooltip="Click to add new category"
       color="primary"
@@ -13,12 +14,18 @@
   </div>
 </div>
 
-<div calss="listContainer" *ngIf="categoryList.length > 0">
+<!-- <div calss="listContainer" *ngIf="categoryList.length > 0">
   <ng-container *ngFor="let category of filteredCategories">
     <mat-card matRipple>
       <mat-card-header>
         <mat-card-title>{{ category.categoryId }}</mat-card-title>
-        <mat-card-subtitle>{{ category.nom }}</mat-card-subtitle>
+        <mat-card-subtitle
+          >{{ category.nom }}
+          <img
+            src="https://wassef.blob.core.windows.net/azure-container/Category%2Fimage1"
+            alt=""
+          />
+        </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         {{ category.description }}
@@ -51,4 +58,54 @@
     [hidePageSize]="true"
   >
   </mat-paginator>
+</div> -->
+<div class="container py-4 py-xl-5">
+  <div
+    class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3"
+    *ngIf="categoryList.length > 0"
+  >
+    <ng-container *ngFor="let category of filteredCategories">
+      <div class="col">
+        <div
+          class="card"
+          style="height: 350px; width: 220px; border-radius: 20px"
+        >
+          <img
+            class="card-img-top w-100 d-block fit-cover"
+            style="height: 200px; border-radius: 10px"
+            src="{{ category.imageURL }}"
+          />
+          <div class="card-body p-4">
+            <h4 class="card-title">{{ category.nom }}</h4>
+            <p class="card-text">
+              {{ category.description }}
+            </p>
+          </div>
+          <div style="margin-left: 17px; margin-bottom: 20px">
+            <a href="#"
+              >Learn More <svg
+                class="bi bi-arrow-right"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
+<mat-paginator
+  [length]="totalCategories"
+  [pageSize]="pageSize"
+  (page)="handlePageChange($event)"
+  [hidePageSize]="true"
+>
+</mat-paginator>

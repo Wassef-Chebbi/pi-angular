@@ -11,6 +11,7 @@ import { NavService } from '../../../../services/nav.service';
 export class AppNavItemComponent implements OnChanges {
   @Input() item: NavItem | any;
   @Input() depth: any;
+  showChildren: boolean = false;
 
   constructor(public navService: NavService, public router: Router) {
     if (this.depth === undefined) {
@@ -35,5 +36,9 @@ export class AppNavItemComponent implements OnChanges {
       top: 0,
       left: 0,
     });
+  }
+
+  toggleChildren() {
+    this.showChildren = !this.showChildren;
   }
 }
