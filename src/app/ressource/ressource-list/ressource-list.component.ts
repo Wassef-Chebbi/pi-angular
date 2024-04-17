@@ -4,7 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ressource } from '../model/ressource';
 import { RessourceService } from 'app/shared/services/ressource.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ressource-list',
@@ -13,7 +13,12 @@ import { Router } from '@angular/router';
 })
 export class RessourceListComponent {
 
-  isAdmin = true;
+  role: string
+
+  isAdmin = JSON.parse(localStorage.getItem('isAdmin') as string);
+
+
+  categoryId: number;
 
   selected_ressource: ressource;
   total_ressource!: number;
@@ -26,15 +31,42 @@ export class RessourceListComponent {
 
     private rerssouceService: RessourceService,
     private router: Router,
-  ) { }
+    private route: ActivatedRoute,
+  ) {
+
+    if (this.isAdmin) {
+      this.role = 'admin'
+    } else {
+      this.role = 'user'
+    }
+  }
+
 
   ngOnInit() {
-    this.getRessources();
+    console.log(this.role);
+    this.categoryId = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.categoryId) {
+      this.getRessourcesByCategoryId(this.categoryId)
+
+    } else {
+      this.getRessources();
+
+    }
+
   }
 
   getRessources(): void {
     this.rerssouceService
       .getAllRessources()
+      .subscribe((categories: ressource[]) => {
+        this.ressource_list = categories;
+        // this.totalCategories = this.categoryList.length;
+        // this.filteredCategories = this.categoryList.slice(0, this.pageSize);
+      });
+  }
+
+  getRessourcesByCategoryId(id: number) {
+    this.rerssouceService.getRessourceByCategory(id)
       .subscribe((categories: ressource[]) => {
         this.ressource_list = categories;
         // this.totalCategories = this.categoryList.length;

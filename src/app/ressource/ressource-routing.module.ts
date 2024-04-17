@@ -5,12 +5,13 @@ import { RessourceListComponent } from './ressource-list/ressource-list.componen
 import { AddRessourceComponent } from './add-ressource/add-ressource.component';
 import { ManageRessourceComponent } from './manage-ressource/manage-ressource.component';
 import { ViewRessourceComponent } from './view-ressource/view-ressource.component';
+import { EmailShareComponent } from './email-share/email-share.component';
 
 
 
 const routes: Routes = [
     {
-        path: 'ressource',
+        path: 'admin/ressource',
         component: RessourceComponent,
         children: [
             {
@@ -34,6 +35,44 @@ const routes: Routes = [
             {
                 path: 'view/:id',
                 component: ViewRessourceComponent,
+            },
+            {
+                path: 'list/:id',
+                component: RessourceListComponent,
+            },
+            {
+                path: 'share/:id',
+                component: EmailShareComponent,
+            },
+
+
+        ]
+    },
+    {
+        path: 'user/ressource',
+        component: RessourceComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+
+            },
+            {
+                path: 'list',
+                component: RessourceListComponent,
+            },
+            {
+                path: 'view/:id',
+                component: ViewRessourceComponent,
+            },
+            {
+                path: 'list/:id',
+                component: RessourceListComponent,
+            },
+            {
+                path: 'share/:id',
+                component: EmailShareComponent,
             },
 
 

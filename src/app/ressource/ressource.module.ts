@@ -9,6 +9,7 @@ import { AddRessourceComponent } from './add-ressource/add-ressource.component';
 import { RessourceListComponent } from './ressource-list/ressource-list.component';
 import { ManageRessourceComponent } from './manage-ressource/manage-ressource.component';
 import { ViewRessourceComponent } from './view-ressource/view-ressource.component';
+import { EmailShareComponent } from './email-share/email-share.component';
 //import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
@@ -23,6 +24,7 @@ import { ViewRessourceComponent } from './view-ressource/view-ressource.componen
     RessourceListComponent,
     ManageRessourceComponent,
     ViewRessourceComponent,
+    EmailShareComponent,
 
 
   ],

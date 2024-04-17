@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { RessourceService } from '../shared/services/ressource.service';
 import { ressource } from './model/ressource';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -13,6 +14,24 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./ressource.component.scss']
 })
 export class RessourceComponent {
+
+  isAdmin: boolean;
+
+
+
+  constructor(private route: ActivatedRoute) {
+
+    console.log(this.route.snapshot.url[0].path);
+    if (this.route.snapshot.url[0].path == 'admin') {
+      this.isAdmin = true
+      localStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
+    } else {
+      this.isAdmin = false
+      localStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
+
+    }
+
+  }
 
   // @ViewChild(MatPaginator) paginator!: MatPaginator;
   // ressourceList: ressource[] = [];
