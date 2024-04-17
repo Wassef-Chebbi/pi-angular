@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { category } from './../model/category';
 
-import { MatDialog } from '@angular/material/dialog';
+
 import { CategoryService } from '../../shared/services/category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
@@ -15,8 +15,9 @@ export class CategoryListComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  isAdmin = JSON.parse(localStorage.getItem('isAdmin') as string);
 
-  isAdmin = true;
+  role: string
 
   selectedCategory: category;
   totalCategories!: number;
@@ -26,10 +27,16 @@ export class CategoryListComponent {
   filteredCategories: category[] = [];
 
   constructor(
-    private dialog: MatDialog,
+
     private categoryService: CategoryService,
     private router: Router,
-  ) { }
+  ) {
+    if (this.isAdmin) {
+      this.role = 'admin'
+    } else {
+      this.role = 'user'
+    }
+  }
 
 
 
@@ -67,9 +74,9 @@ export class CategoryListComponent {
     }
   }
   add() {
-    this.router.navigate(['category/add']);
+    this.router.navigate(['admin/category/add']);
   }
   manage() {
-    this.router.navigate(['category/manage', this.selectedCategory.categoryId]);
+    this.router.navigate(['admin/category/manage', this.selectedCategory.categoryId]);
   }
 }

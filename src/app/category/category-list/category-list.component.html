@@ -1,4 +1,4 @@
-<div calss="container">
+<div calss="container " *ngIf="isAdmin">
   <div class="title"><h1>Category List</h1></div>
   <div class="buttonContainer">
     <button
@@ -36,7 +36,7 @@
             </p>
           </div>
           <div style="margin-left: 17px; margin-bottom: 20px; display: grid">
-            <a>
+            <a href="{{ role }}/ressource/list/{{ category.categoryId }}">
               Learn More <svg
                 class="bi bi-arrow-right"
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
                 ></path>
               </svg>
             </a>
-            <a href="category/manage/{{ category.categoryId }}"
+            <a href="category/manage/{{ category.categoryId }}" *ngIf="isAdmin"
               >Manage <svg
                 class="bi bi-arrow-right"
                 xmlns="http://www.w3.org/2000/svg"

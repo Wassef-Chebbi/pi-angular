@@ -9,14 +9,37 @@ import { CategoryListComponent } from './category-list/category-list.component';
 
 const routes: Routes = [
     {
-        path: 'category',
+        // path: 'category',
+        // component: CategoryComponent,
+        // children: [
+        //     {
+        //         path: '',
+        //         redirectTo: 'list',
+        //         pathMatch: 'full'
+
+        //     },
+        //     {
+        //         path: 'list',
+        //         component: CategoryListComponent,
+        //     },
+        //     {
+        //         path: 'manage/:id',
+        //         component: ManageCategoryComponent,
+        //     },
+        //     {
+        //         path: 'add',
+        //         component: AddCategoryComponent,
+        //     },
+
+
+        // ]
+        path: 'admin/category',
         component: CategoryComponent,
         children: [
             {
                 path: '',
                 redirectTo: 'list',
                 pathMatch: 'full'
-
             },
             {
                 path: 'list',
@@ -30,50 +53,27 @@ const routes: Routes = [
                 path: 'add',
                 component: AddCategoryComponent,
             },
-
-
         ]
-        //     path: 'admin/category',
-        //     component: CategoryComponent,
-        //     children: [
-        //         {
-        //             path: '',
-        //             redirectTo: 'list',
-        //             pathMatch: 'full'
-        //         },
-        //         {
-        //             path: 'list',
-        //             component: CategoryListComponent,
-        //         },
-        //         {
-        //             path: 'manage/:id',
-        //             component: ManageCategoryComponent,
-        //         },
-        //         {
-        //             path: 'add',
-        //             component: AddCategoryComponent,
-        //         },
-        //     ]
 
-        // },
+    },
 
-        // {
-        //     path: 'user/category',
-        //     component: CategoryComponent,
-        //     children: [
-        //         {
-        //             path: '',
-        //             redirectTo: 'list',
-        //             pathMatch: 'full'
-        //         },
-        //         {
-        //             path: 'list',
-        //             component: CategoryListComponent,
-        //         }]
-        // },
+    {
+        path: 'user/category',
+        component: CategoryComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+            },
+            {
+                path: 'list',
+                component: CategoryListComponent,
+            }]
+    },
 
 
-    }];
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

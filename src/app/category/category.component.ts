@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 // import { category } from './model/category';
+import { ActivatedRoute } from '@angular/router';
 
 // import { MatDialog } from '@angular/material/dialog';
 // import { CategoryService } from '../shared/services/category.service';
@@ -14,6 +15,30 @@ import { Component, ViewChild } from '@angular/core';
  * Represents a component for managing categories.
  */
 export class CategoryComponent {
+  isAdmin: boolean;
+
+
+
+  constructor(private route: ActivatedRoute) {
+
+    console.log(this.route.snapshot.url[0].path);
+    if (this.route.snapshot.url[0].path == 'admin') {
+      this.isAdmin = true
+      localStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
+    } else {
+      this.isAdmin = false
+      localStorage.setItem('isAdmin', JSON.stringify(this.isAdmin));
+
+    }
+
+  }
+
+
+
+
+
+
+
   // @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
