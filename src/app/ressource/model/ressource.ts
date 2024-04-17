@@ -4,8 +4,10 @@ export class ressource {
     ressourceId: number;
     nom: string;
     description: string;
-    categories: category[];
+    category: category;
     fileURL: string;
     filePath: string;
+    imageURL: string;
+    imagePath: string;
 
 }

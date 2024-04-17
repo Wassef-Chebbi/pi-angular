@@ -1,0 +1,103 @@
+<section class="position-relative py-4 py-xl-5">
+  <div class="container position-relative">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+        <div class="card mb-5">
+          <div class="card-body p-sm-5">
+            <h2 class="text-center mb-4">Add new Resdsource</h2>
+            <form method="post" [formGroup]="newRessourceForm">
+              <div class="mb-3">
+                <input
+                  id="name-2"
+                  class="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  formControlName="nom"
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  id="message-2"
+                  class="form-control"
+                  name="message"
+                  rows="6"
+                  placeholder="Description"
+                  formControlName="description"
+                ></textarea>
+              </div>
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                (selectionChange)="onSelectionChange($event)"
+                [(ngModel)]="selectedCategoryId"
+              >
+                <option selected>hello</option>
+                <ng-container *ngFor="let category of categoryList">
+                  <option [value]="category.categoryId">
+                    {{ category.nom }}
+                  </option>
+                </ng-container>
+              </select>
+              <div style="width: 250px; display: flex; gap: 20px">
+                <input
+                  id="user_group_logo"
+                  class="form-control custom-file-input"
+                  type="file"
+                  accept="image/*"
+                  name="user_group_logo"
+                  #fileUpload
+                  (change)="onImageSelected($event)"
+                />
+                <!-- <div class="text-center" style="display: block">
+                  <label
+                    id="user_group_label"
+                    class="form-label"
+                    for="user_group_logo"
+                    ><i class="fas fa-upload"></i> Choose an image...</label
+                  >
+                </div> -->
+                <!-- <div class="text-center mt-2">
+                  <button class="btn btn-primary" type="submit">Upload</button>
+                </div> -->
+              </div>
+              <div style="width: 250px; display: flex; gap: 20px">
+                <input
+                  id="user_group_logo"
+                  class="form-control custom-file-input"
+                  type="file"
+                  name="user_group_logo"
+                  #fileUpload
+                  (change)="onFileSelected($event)"
+                />
+                <!-- <div class="text-center" style="display: block">
+                  <label
+                    id="user_group_label"
+                    class="form-label"
+                    for="user_group_logo"
+                    ><i class="fas fa-upload"></i> Choose an image...</label
+                  >
+                </div> -->
+                <!-- <div class="text-center mt-2">
+                  <button class="btn btn-primary" type="submit">Upload</button>
+                </div> -->
+              </div>
+
+              <div>
+                <button
+                  class="btn btn-primary d-block w-100"
+                  type="submit"
+                  style="margin: 10px"
+                  (click)="addRessource()"
+                  [disabled]="!canAdd || !canAddFile"
+                >
+                  Send
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

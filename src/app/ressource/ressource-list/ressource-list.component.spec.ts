@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RessourceModalComponent } from './ressource-modal.component';
+import { RessourceListComponent } from './ressource-list.component';
 
-describe('RessourceModalComponent', () => {
-  let component: RessourceModalComponent;
-  let fixture: ComponentFixture<RessourceModalComponent>;
+describe('RessourceListComponent', () => {
+  let component: RessourceListComponent;
+  let fixture: ComponentFixture<RessourceListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RessourceModalComponent ]
+      declarations: [ RessourceListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RessourceModalComponent);
+    fixture = TestBed.createComponent(RessourceListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
