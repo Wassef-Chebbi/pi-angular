@@ -102,12 +102,13 @@ export class ManageRessourceComponent {
     this.updateRessourceForm.value.imagePath = this.imagePath;
     this.updateRessourceForm.value.fileURL = this.fileURL;
     this.updateRessourceForm.value.filePath = this.filePath;
+    this.updateRessourceForm.value.categoryId = this.categoryId;
     this.ressource = this.updateRessourceForm.value;
     this.ressourceService.updateRessource(this.ressource)
       .subscribe({
         next: response => {
           console.log(response);
-          this.router.navigate(['/list']);
+          this.router.navigate(['admin/ressource/list']);
         },
         error: error => {
           console.error('There was an error updating category', error);
@@ -200,7 +201,7 @@ export class ManageRessourceComponent {
       .subscribe({
         next: response => {
           console.log(response);
-          this.router.navigate(['/list']);
+          this.router.navigate(['admin/ressource/list']);
         },
         error: error => {
           console.error('There was an error deleting ressource', error);

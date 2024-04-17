@@ -13,9 +13,13 @@
               />
             </div>
             <div>
+              <label>Titre</label>
               <h5 class="card-title">{{ ressource.nom }}</h5>
-              <p class="card-text">{{ ressource.description }}</p>
+              <label>Description</label>
+              <p class="card-description">{{ ressource.description }}</p>
+              <label>Categorie</label>
               <p class="card-text">{{ ressource.category.nom }}</p>
+              <label>Prix</label>
               <p class="card-text">Price: 60DT</p>
             </div>
           </div>
@@ -67,6 +71,54 @@
                 <p class="card-text">{{ data.response }}</p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <H3 style="margin: 10px">Search for more ressources usnig wikipedia</H3>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-content">
+            <div class="search-form">
+              <form (submit)="onSubmit()">
+                <div class="input-group">
+                  <input
+                    [(ngModel)]="searchTerm"
+                    type="text"
+                    name="search"
+                    class="form-control input-lg rounded-pill"
+                  />
+                  <div class="input-group-btn ms-3">
+                    <button class="btn btn-lg btn-primary">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <div *ngFor="let result of results" class="search-result mt-3">
+              <a
+                href="https://en.wikipedia.org/wiki?curid={{ result.pageid }}"
+                class="search-link"
+                >https://en.wikipedia.org/wiki?curid={{ result.pageid }}</a
+              >
+
+              <h4>
+                <a
+                  href="https://en.wikipedia.org/wiki?curid={{ result.pageid }}"
+                  >{{ result.title }}</a
+                >
+              </h4>
+
+              <p [innerHtml]="result.snippet"></p>
+              <p></p>
+            </div>
+
+            <!-- If result is less that 10, display none -->
+            <!-- <div class="text-center" *ngIf="results.length > 10">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div> -->
           </div>
         </div>
       </div>

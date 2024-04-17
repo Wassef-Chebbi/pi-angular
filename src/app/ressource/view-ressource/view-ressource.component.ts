@@ -6,6 +6,7 @@ import { RessourceService } from 'app/shared/services/ressource.service';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { OpenaiService } from 'app/shared/services/openai.service';
+import { WikiService } from 'app/shared/services/wiki.service';
 
 
 
@@ -57,7 +58,8 @@ export class ViewRessourceComponent {
 
     private router: Router,
     private route: ActivatedRoute,
-    private ressourceService: RessourceService
+    private ressourceService: RessourceService,
+    private wiki: WikiService
   ) {
     if (this.isAdmin) {
       this.role = 'admin'
@@ -97,6 +99,24 @@ export class ViewRessourceComponent {
       error: (error: any) => {
         console.error(error);
       }
+    });
+  }
+  //=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-
+
+  title = 'wiki';
+  searchTerm: any;
+  results: any = [];
+
+  totalResults: any;
+  page: number = 1;
+
+
+  onSubmit() {
+    this.wiki.search(this.searchTerm).subscribe((res: any) => {
+      this.results = res.query.search;
+
+      this.totalResults = res.query.search.length;
+      console.log(this.results);
     });
   }
 

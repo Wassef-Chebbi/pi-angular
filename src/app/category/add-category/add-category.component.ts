@@ -59,7 +59,7 @@ export class AddCategoryComponent {
     this.categoryService.createCategory(this.newCategory)
       .subscribe({
         next: response => {
-          this.router.navigate(['category/list']);
+          this.router.navigate(['admin/category/list']);
           console.log(response)
         },
         error: error => {

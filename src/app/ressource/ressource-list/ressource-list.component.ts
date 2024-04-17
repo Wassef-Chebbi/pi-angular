@@ -85,7 +85,7 @@ export class RessourceListComponent {
     }
   }
   add() {
-    this.router.navigate(['ressource/add']);
+    this.router.navigate(['admin/ressource/add']);
   }
 
 }

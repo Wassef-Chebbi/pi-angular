@@ -90,7 +90,7 @@ export class AddRessourceComponent {
     this.ressourceService.createRessource(this.newRessource)
       .subscribe({
         next: response => {
-          this.router.navigate(['ressource/list']);
+          this.router.navigate(['admin/ressource/list']);
           console.log(response)
         },
         error: error => {

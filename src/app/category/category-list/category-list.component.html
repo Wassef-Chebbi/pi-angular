@@ -51,7 +51,9 @@
                 ></path>
               </svg>
             </a>
-            <a href="category/manage/{{ category.categoryId }}" *ngIf="isAdmin"
+            <a
+              href="admin/category/manage/{{ category.categoryId }}"
+              *ngIf="isAdmin"
               >Manage <svg
                 class="bi bi-arrow-right"
                 xmlns="http://www.w3.org/2000/svg"

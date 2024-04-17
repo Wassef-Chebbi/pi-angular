@@ -79,7 +79,7 @@ export class ManageCategoryComponent {
       .subscribe({
         next: response => {
           console.log(response);
-          this.router.navigate(['/list']);
+          this.router.navigate(['admin/category/list']);
         },
         error: error => {
           console.error('There was an error updating category', error);
@@ -118,7 +118,7 @@ export class ManageCategoryComponent {
       .subscribe({
         next: response => {
           console.log(response);
-          this.router.navigate(['/list']);
+          this.router.navigate(['admin/category/list']);
         },
         error: error => {
           console.error('There was an error deleting category', error);
