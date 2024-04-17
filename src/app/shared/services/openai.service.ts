@@ -12,7 +12,7 @@ export class OpenaiService {
 
   constructor() {
     this.openai = new OpenAI({
-      apiKey: 'sk-proj-TeSx65gYuNuoywoQXatLT3BlbkFJm88YkNdZwZh7DIZXjKDg',
+      apiKey: '',
       dangerouslyAllowBrowser: true // This is the default and can be omitted
     });
   }
