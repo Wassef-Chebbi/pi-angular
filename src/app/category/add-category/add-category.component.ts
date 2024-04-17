@@ -16,7 +16,8 @@ export class AddCategoryComponent {
   newCategoryForm: FormGroup;
 
   imageName: string;
-  imageLocation = "Category/images";
+  imageLocation: string;
+
   imagePath: string;
   imageURL: string;
 
@@ -58,7 +59,7 @@ export class AddCategoryComponent {
     this.categoryService.createCategory(this.newCategory)
       .subscribe({
         next: response => {
-          this.router.navigate(['list']);
+          this.router.navigate(['category/list']);
           console.log(response)
         },
         error: error => {
@@ -69,7 +70,7 @@ export class AddCategoryComponent {
   }
 
 
-  onFileSelected(event: any) {
+  onImageSelected(event: any) {
 
     const file: File = event.target.files[0];
     if (file) {
@@ -79,6 +80,7 @@ export class AddCategoryComponent {
   }
 
   uploadImage(fl: File) {
+    this.imageLocation = 'image';
     this.imagePath = this.imageLocation + '/' + this.imageName;
     this.uploadService.upload(fl, this.imageLocation, this.imageName)
       .subscribe({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ressource } from '../../ressource/model/ressource';
-import { addRessourceDto } from 'app/ressource/dto/add-ressource';
+import { ressourceDTO } from 'app/ressource/model/ressourceDTO';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class RessourceService {
   constructor(private httpClient: HttpClient) { }
 
 
-  createRessource(ressource: addRessourceDto) {
+  createRessource(ressource: ressourceDTO) {
     return this.httpClient.post('http://localhost:8080/api/ressource/add', ressource);
   }
 
@@ -31,5 +31,9 @@ export class RessourceService {
 
   getRessourceById(id: number): Observable<ressource> {
     return this.httpClient.get<ressource>(`http://localhost:8080/api/ressource/getById/${id}`);
+  }
+
+  getRessourceByCategory(id: number): Observable<ressource[]> {
+    return this.httpClient.get<ressource[]>(`http://localhost:8080/api/ressource/getByCategory/${id}`);
   }
 }

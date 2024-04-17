@@ -8,6 +8,7 @@ import { RessourceRoutingModule } from './ressource-routing.module';
 import { AddRessourceComponent } from './add-ressource/add-ressource.component';
 import { RessourceListComponent } from './ressource-list/ressource-list.component';
 import { ManageRessourceComponent } from './manage-ressource/manage-ressource.component';
+import { ViewRessourceComponent } from './view-ressource/view-ressource.component';
 //import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
@@ -21,6 +22,7 @@ import { ManageRessourceComponent } from './manage-ressource/manage-ressource.co
     AddRessourceComponent,
     RessourceListComponent,
     ManageRessourceComponent,
+    ViewRessourceComponent,
 
 
   ],

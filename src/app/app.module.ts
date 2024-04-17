@@ -34,6 +34,7 @@ import { FooterComponent } from './layouts/front/footer/footer.component';
 
 import { SharedModule } from './shared/shared.module';
 import { CategoryModule } from './category/category.module';
+import { RessourceModule } from './ressource/ressource.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { CategoryModule } from './category/category.module';
     UniversityModule,
     ClubModule,
     SharedModule,
-    CategoryModule
+    CategoryModule,
+    RessourceModule
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],

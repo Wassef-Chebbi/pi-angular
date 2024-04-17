@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { RessourceComponent } from './ressource.component';
 import { RessourceListComponent } from './ressource-list/ressource-list.component';
 import { AddRessourceComponent } from './add-ressource/add-ressource.component';
-
+import { ManageRessourceComponent } from './manage-ressource/manage-ressource.component';
+import { ViewRessourceComponent } from './view-ressource/view-ressource.component';
 
 
 
@@ -22,13 +23,17 @@ const routes: Routes = [
                 path: 'list',
                 component: RessourceListComponent,
             },
-            // {
-            //     path: 'manage/:id',
-            //     component: ManageCategoryComponent,
-            // },
+            {
+                path: 'manage/:id',
+                component: ManageRessourceComponent,
+            },
             {
                 path: 'add',
                 component: AddRessourceComponent,
+            },
+            {
+                path: 'view/:id',
+                component: ViewRessourceComponent,
             },
 
 

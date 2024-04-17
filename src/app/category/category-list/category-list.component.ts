@@ -69,4 +69,7 @@ export class CategoryListComponent {
   add() {
     this.router.navigate(['category/add']);
   }
+  manage() {
+    this.router.navigate(['category/manage', this.selectedCategory.categoryId]);
+  }
 }

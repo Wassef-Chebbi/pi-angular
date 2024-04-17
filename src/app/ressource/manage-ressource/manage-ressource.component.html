@@ -1,1 +1,129 @@
-<p>manage-ressource works!</p>
+<section class="position-relative py-4 py-xl-5">
+  <div class="container position-relative">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+        <div class="card mb-5">
+          <div class="card-body p-sm-5">
+            <h2 class="text-center mb-4">Manage Category</h2>
+            <form method="post" [formGroup]="updateRessourceForm">
+              <div class="mb-3">
+                <input
+                  id="name-2"
+                  class="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="{{ ressource.nom }}"
+                  formControlName="nom"
+                  [value]="ressource.nom"
+                />
+              </div>
+              <div class="mb-3">
+                <textarea
+                  id="message-2"
+                  class="form-control"
+                  name="message"
+                  rows="6"
+                  [value]="ressource.description"
+                  placeholder="{{ ressource.description }}"
+                  formControlName="description"
+                ></textarea>
+              </div>
+              <div
+                class="mb-3"
+                style="
+                  width: 250px;
+                  display: inline-flex;
+                  gap: 20px;
+                  justify-content: center;
+                "
+              >
+                <input
+                  id="user_group_logo"
+                  class="form-control custom-file-input"
+                  type="file"
+                  accept="image/*"
+                  name="user_group_logo"
+                  [textContent]="ressource.imageURL"
+                  #fileUpload
+                  (change)="onImageSelected($event)"
+                />
+
+                <!-- <div class="text-center" style="display: block">
+                    <label
+                      id="user_group_label"
+                      class="form-label"
+                      for="user_group_logo"
+                      ><i class="fas fa-upload"></i> Choose an image...</label
+                    >
+                  </div> -->
+                <!-- <div class="text-center mt-2">
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                    <p>{{ category.imagePath }}</p>
+                  </div> -->
+              </div>
+              <div
+                class="mb-3"
+                style="
+                  width: 250px;
+                  display: inline-flex;
+                  gap: 20px;
+                  justify-content: center;
+                "
+              >
+                <input
+                  id="user_group_logo"
+                  class="form-control custom-file-input"
+                  type="file"
+                  name="user_group_logo"
+                  [textContent]="ressource.imageURL"
+                  #fileUpload
+                  (change)="onFileSelected($event)"
+                />
+
+                <!-- <div class="text-center" style="display: block">
+                    <label
+                      id="user_group_label"
+                      class="form-label"
+                      for="user_group_logo"
+                      ><i class="fas fa-upload"></i> Choose an image...</label
+                    >
+                  </div> -->
+                <!-- <div class="text-center mt-2">
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                    <p>{{ category.imagePath }}</p>
+                  </div> -->
+              </div>
+              <img
+                src="{{ imageURL }}"
+                alt=""
+                class="rounded mx-auto d-block text-center"
+                style="height: 100px; width: 100px; border-radius: 50%"
+              />
+
+              <div>
+                <button
+                  class="btn btn-primary d-block w-100"
+                  type="submit"
+                  style="margin: 10px"
+                  (click)="updateCategory()"
+                >
+                  Update
+                </button>
+              </div>
+              <div>
+                <button
+                  class="btn btn-danger d-block w-100"
+                  type="submit"
+                  style="margin: 10px"
+                  (click)="deleteRessource()"
+                >
+                  Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
